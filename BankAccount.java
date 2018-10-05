@@ -37,4 +37,20 @@ public class BankAccount {
                return false;
           }
      }
+     private boolean authenticate(String pw) {
+          return (pw == password);
+     }
+     public boolean transferTo(BankAccount other, double amount, String password) {
+          if (this.authenticate(password)) {
+               if (this.withdraw(amount)) {
+                    return other.deposit(amount);
+               }
+               else {
+                    return false;
+               }
+          }
+          else {
+               return false;
+          }
+     }
 }
